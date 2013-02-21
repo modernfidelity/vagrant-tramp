@@ -1,5 +1,10 @@
+T.R.A.M.P
+=========
+
+(True Representation And Model of Production)
+
 Vagrant Multi VM Environment (Ubuntu 10.04 LTS)
-===============================================
+-----------------------------------------------
 
 The aim of this project is to easily and consistently create a virtual development environment that mirrors a live production setup, and gives developers working in teams, identical working areas.
 
