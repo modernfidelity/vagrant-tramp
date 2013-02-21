@@ -13,7 +13,7 @@ It uses <a href="https://www.virtualbox.org/">Virtualbox</a>, <a href="http://ww
 The following code provides VagrantFile + Puppet manifest scripts, which will create a standalone web prod environment, consisting of multi VMs (1x Load Balancer, 2x Web Server, 1x Database Server)
 
 
- - <a href="https://github.com/modernfidelity/vagrant-web-prod-precise64">Click here a complete version running Ubuntu 12.04 LTS</a>
+ - <a href="https://github.com/modernfidelity/vagrant-web-prod-precise64">Click here for a complete version running Ubuntu 12.04 LTS</a>
 
 
 Instructions
