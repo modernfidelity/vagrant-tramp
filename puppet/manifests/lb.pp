@@ -32,6 +32,11 @@ class system-update {
     
   }
 
+  exec { 'Hosts IP':
+   command => "sudo sed -i '1i 33.33.33.30  lb' /etc/hosts",
+   path    => "/usr/local/bin/:/bin/:/usr/bin/",
+  }
+
 }
 
 
