@@ -97,6 +97,10 @@ class php {
   package { "php5":
     ensure => present,
   }
+
+  package { "php5-dev":
+    ensure => present,
+  }
  
   package { "php-apc":
     ensure => present,
