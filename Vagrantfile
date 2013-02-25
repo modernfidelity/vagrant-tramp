@@ -122,7 +122,7 @@ Vagrant::Config.run do |config|
     # config.vm.provision :shell, :inline => "echo \"Europe/London\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
     
     # Update the server
-    config.vm.provision :shell, :inline => "apt-get update --fix-missing"
+    # config.vm.provision :shell, :inline => "apt-get update --fix-missing"
 
    
     config.vm.provision :puppet, :module_path => "puppet/modules" do |puppet|
