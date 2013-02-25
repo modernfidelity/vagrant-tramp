@@ -21,7 +21,7 @@ class groups {
 class system-update {
 
 
-  $sysPackages = [ "build-essential" , "vim"]
+  $sysPackages = [ "build-essential" , "vim" , "libpcre3-dev" , "libssl-dev"]
 
   exec { 'apt-get update':
    command => '/usr/bin/apt-get update --fix-missing'
