@@ -44,7 +44,7 @@ The following software versions are installed on the vms :
 
  - Ubuntu 10.04 LTS
  - Apache 2.2.14
- - MySQL 5.1.67
+ - Percona MySQL 5.5
  - PHP 5.3.2
  - Varnish 2.1
  - nginx 0.7.65
