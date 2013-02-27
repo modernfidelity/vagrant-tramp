@@ -15,6 +15,32 @@ class groups {
 include groups
 
 
+
+
+# SYSTEM-UPDATE
+# --------------------------
+
+
+class system-update {
+
+
+  $sysPackages = [ "build-essential" , "vim", "git-core"]
+
+  exec { 'apt-get update':
+   command => '/usr/bin/apt-get update --fix-missing'
+  }
+
+  package { $sysPackages:
+    ensure => "installed",
+    
+  }
+
+}
+
+
+include system-update
+
+
 # Percona APT Repo
 # --------------------------
 
