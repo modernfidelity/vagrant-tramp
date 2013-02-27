@@ -21,7 +21,7 @@ class groups {
 class system-update {
 
 
-  $sysPackages = [ "build-essential" , "vim", "mysql-client" , "git-core"]
+  $sysPackages = [ "build-essential" , "vim", "mysql-client" , "mysql-server" , "git-core"]
 
   exec { 'apt-get update':
    command => '/usr/bin/apt-get update --fix-missing'
@@ -132,6 +132,8 @@ class php {
   package { "libapache2-mod-php5":
     ensure => present,
   }
+
+
 
 }
  
