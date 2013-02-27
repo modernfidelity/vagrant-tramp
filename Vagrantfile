@@ -55,7 +55,7 @@ Vagrant::Config.run do |config|
     config.vm.network :hostonly, "33.33.33.31"
     config.vm.forward_port(80,3031)
 
-    config.vm.customize ["modifyvm", :id, "--memory", 256]
+    config.vm.customize ["modifyvm", :id, "--memory", 1024]
 
     # Set the Timezone to something useful
     # config.vm.provision :shell, :inline => "echo \"Europe/London\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
@@ -85,7 +85,7 @@ Vagrant::Config.run do |config|
     config.vm.network :hostonly, "33.33.33.32"
     config.vm.forward_port(80,3032)
 
-    config.vm.customize ["modifyvm", :id, "--memory", 256]  
+    config.vm.customize ["modifyvm", :id, "--memory", 1024]  
     
 
     # Set the Timezone to something useful
@@ -115,7 +115,7 @@ Vagrant::Config.run do |config|
     config.vm.network :hostonly, "33.33.33.33"
     config.vm.forward_port(3306,3033)
 
-    config.vm.customize ["modifyvm", :id, "--memory", 256]
+    config.vm.customize ["modifyvm", :id, "--memory", 1024]
 
 
     # Set the Timezone to something useful
