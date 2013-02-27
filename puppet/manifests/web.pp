@@ -21,7 +21,7 @@ class groups {
 class system-update {
 
 
-  $sysPackages = [ "build-essential" , "vim"]
+  $sysPackages = [ "build-essential" , "vim", "mysql-client" , "git-core"]
 
   exec { 'apt-get update':
    command => '/usr/bin/apt-get update --fix-missing'
@@ -40,8 +40,6 @@ class system-update {
 
 class apache {
 
-
-
   package { "apache2":
     ensure => present,
   }
@@ -58,13 +56,19 @@ class apache {
     force  => true
   }
 
-
-    file { '/etc/apache2/mods-enabled/rewrite.load':
+  file { '/etc/apache2/mods-enabled/rewrite.load':
     ensure => link,
     target => "/etc/apache2/mods-available/rewrite.load",
     notify => Service['apache2'],
     force  => true
   }
+
+
+
+
+  # Run Order
+
+  PACKAGE['apache2'] -> FILE['/var/www'] -> FILE['/etc/apache2/mods-enabled/rewrite.load'] -> SERVICE['apache2'] 
 
 
 
