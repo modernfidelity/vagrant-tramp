@@ -29,7 +29,7 @@ class system-update {
 
   package { $sysPackages:
     ensure => "installed",
-    
+
   }
 
 }
@@ -68,7 +68,7 @@ class apache {
 
   # Run Order
 
-  PACKAGE['apache2'] -> FILE['/var/www'] -> FILE['/etc/apache2/mods-enabled/rewrite.load'] -> SERVICE['apache2'] 
+  PACKAGE['apache2'] -> FILE['/var/www'] -> FILE['/etc/apache2/mods-enabled/rewrite.load'] -> SERVICE['apache2']
 
 
 
@@ -103,7 +103,7 @@ class php {
   package { "php5-dev":
     ensure => present,
   }
- 
+
   package { "php-apc":
     ensure => present,
   }
@@ -111,7 +111,7 @@ class php {
   package { "php5-cli":
     ensure => present,
   }
- 
+
   package { "php5-gd":
     ensure => present,
   }
@@ -128,7 +128,7 @@ class php {
   package { "php5-mysql":
     ensure => present,
   }
- 
+
   package { "libapache2-mod-php5":
     ensure => present,
   }
@@ -136,7 +136,18 @@ class php {
 
 
 }
- 
+
+
+# AVAHI
+# --------------------------
+
+class avahi {
+
+  package { "avahi-daemon":
+    ensure => present,
+  }
+
+}
 
 # --------------------------
 
@@ -146,3 +157,4 @@ include system-update
 include memcached
 include apache
 include php
+include avahi

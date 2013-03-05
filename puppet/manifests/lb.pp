@@ -29,7 +29,7 @@ class system-update {
 
   package { $sysPackages:
     ensure => "installed",
-    
+
   }
 
   exec { 'Hosts IP':
@@ -46,7 +46,7 @@ class system-update {
 # --------------------------
 
 class nginx {
- 
+
   package { "nginx":
     ensure => latest,
   }
@@ -88,7 +88,7 @@ class nginx {
 # --------------------------
 
 class varnish {
- 
+
   package { "varnish":
     ensure => latest,
   }
@@ -108,6 +108,17 @@ class varnish {
 
 }
 
+# AVAHI
+# --------------------------
+
+class avahi {
+
+  package { "avahi-daemon":
+    ensure => present,
+  }
+
+}
+
 # --------------------------
 
 
@@ -115,4 +126,5 @@ include groups
 include system-update
 include nginx
 include varnish
+include avahi
 
