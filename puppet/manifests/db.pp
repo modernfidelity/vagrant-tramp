@@ -26,11 +26,11 @@ class system-update {
 
   $sysPackages = [ "build-essential" , "vim", "git-core"]
 
- 
+
 
   package { $sysPackages:
     ensure => "installed",
-    
+
   }
 
 }
@@ -48,14 +48,14 @@ class percona-apt-repo {
   exec { 'percona-add-repo-key':
     command => 'gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A',
     path    => "/usr/local/bin/:/bin/:/usr/bin/",
-   
+
   }
 
   exec { 'percona-add-repo-key2':
     command => 'gpg -a --export CD2EFD2A | sudo apt-key add -',
     path    => "/usr/local/bin/:/bin/:/usr/bin/",
   }
-  
+
 
   file {'percona-source':
     owner   => root,
@@ -72,7 +72,7 @@ class percona-apt-repo {
   }
 
   # RESOURCES RUN ORDER
-  EXEC['percona-add-repo-key'] -> EXEC['percona-add-repo-key2'] -> File['percona-source'] -> EXEC['apt-get update'] 
+  EXEC['percona-add-repo-key'] -> EXEC['percona-add-repo-key2'] -> File['percona-source'] -> EXEC['apt-get update']
 
 
 
@@ -87,8 +87,8 @@ class percona {
 
 
   package {
-    ["percona-server-server-5.5" , "percona-server-client-5.5"]: 
-      ensure => installed, 
+    ["percona-server-server-5.5" , "percona-server-client-5.5"]:
+      ensure => installed,
   }
 
   service { "mysql":
@@ -96,15 +96,15 @@ class percona {
     require => Package["percona-server-server-5.5"],
   }
 
-  
+
   exec { "set-mysql-password":
     unless  => "mysql -uroot -proot",
     path    => ["/bin", "/usr/bin"],
     command => "mysqladmin -uroot password root",
     require => Service["mysql"],
- 
+
   }
- 
+
 
   file {'my.cnf':
     owner   => root,
@@ -114,7 +114,7 @@ class percona {
     source  =>  '/vagrant/puppet/files/my.cnf',
   }
 
-  
+
   exec { "database-create":
     unless  => "/usr/bin/mysql -uroot -proot drupal",
     #command => "/usr/bin/mysql -uroot -proot -e \"create database ; grant all on my_website.* to vagrant@localhost identified by 'vagrant';\"",
@@ -128,14 +128,14 @@ class percona {
     onlyif => '/usr/bin/test -f /vagrant/www/database.sql',
     command     => "/usr/bin/mysql -uroot -proot my_website < /vagrant/www/database.sql",
     logoutput   => true,
-    
+
   }
 
 
   exec { "database-perms":
     command => "/usr/bin/mysql -uroot -proot -e \"GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'root';flush privileges;\"",
     require => Service["mysql"],
- 
+
   }
 
 
@@ -147,9 +147,21 @@ class percona {
 
 }
 
+# AVAHI
+# --------------------------
+
+class avahi {
+
+  package { "avahi-daemon":
+    ensure => present,
+  }
+
+}
+
 
 include percona-apt-repo
 include percona
+include avahi
 
 
 
