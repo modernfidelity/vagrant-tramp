@@ -73,7 +73,7 @@ Contributors
 
 Code goodness provided by : 
 
-@sonniesedge ( https://github.com/sonniesedge )
+<a href="https://twitter.com/sonniesedge">@sonniesedge</a> ( https://github.com/sonniesedge )
 
 Notes
 -----
