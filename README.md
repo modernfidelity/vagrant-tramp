@@ -67,6 +67,14 @@ This will then build the following vm boxes :
 
 These VMs are based on Ubuntu Lucid 64 Bit => http://files.vagrantup.com/lucid64.box
 
+
+Contributors
+------------
+
+Code goodness provided by : 
+
+@sonniesedge ( https://github.com/sonniesedge )
+
 Notes
 -----
 *Please note - you might get port errors if you are running other services on those ports. 
