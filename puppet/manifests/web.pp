@@ -72,6 +72,12 @@ class apache {
 
 
 
+  file {'/etc/apache2/sites-available/default':
+    path    => '/etc/apache2/sites-available/default',
+    ensure  => present,
+    source  =>  '/vagrant/puppet/files/apache.conf',
+  }
+
 }
 
 
@@ -133,6 +139,12 @@ class php {
     ensure => present,
   }
 
+
+  file {'/etc/php5/apache2/php.ini':
+    path    => '/etc/php5/apache2/php.ini',
+    ensure  => present,
+    source  =>  '/vagrant/puppet/files/php.ini',
+  }
 
 
 }
